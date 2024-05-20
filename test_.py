@@ -18,3 +18,6 @@ def driver():
 def test_is_opened(driver):
     driver.get("https://www.google.com/")
     WebDriverWait(driver, 10).until(EC.url_to_be("https://www.google.com/"))
+
+def test_assert():
+    assert 4 == 4

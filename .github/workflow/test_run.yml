@@ -11,16 +11,25 @@ jobs:
       - name: Checkout repository
         uses: actions/checkout@v3
 
-      - name: Setup python
+      - name: Setup Python
         uses: actions/setup-python@v4
         with:
           python-version: 3.12
-      - name: Install chrome
-        run: sudo apt-get install google-chrome-stable
+
+      - name: Setup Chrome
+        uses: actions/setup-chrome@v1
+
+      - name: Create and activate virtual environment
+        run: |
+          python -m venv venv
+          source venv/bin/activate
+
       - name: Install dependencies
         run: pip install -r requirements.txt
+
       - name: Run tests
         run: pytest
+
 
 
 
